@@ -1,0 +1,13 @@
+FROM node:alpine
+EXPOSE 4000
+EXPOSE 5000
+ENV PRISMA_MANAGEMENT_API_SECRET my-secret
+
+WORKDIR app
+
+COPY . .
+
+RUN yarn global add prisma graphql-cli nodemon
+RUN yarn
+
+CMD ["./server/start_server.sh"]
